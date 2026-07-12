@@ -1,3 +1,7 @@
+output "cosmosdb_sql_databases_id" {
+  description = "Map of id values across all cosmosdb_sql_databases, keyed the same as var.cosmosdb_sql_databases"
+  value       = { for k, v in azurerm_cosmosdb_sql_database.cosmosdb_sql_databases : k => v.id }
+}
 output "cosmosdb_sql_databases_account_name" {
   description = "Map of account_name values across all cosmosdb_sql_databases, keyed the same as var.cosmosdb_sql_databases"
   value       = { for k, v in azurerm_cosmosdb_sql_database.cosmosdb_sql_databases : k => v.account_name }
