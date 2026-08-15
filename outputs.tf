@@ -8,7 +8,7 @@ output "cosmosdb_sql_databases_account_name" {
 }
 output "cosmosdb_sql_databases_autoscale_settings" {
   description = "Map of autoscale_settings values across all cosmosdb_sql_databases, keyed the same as var.cosmosdb_sql_databases"
-  value       = { for k, v in azurerm_cosmosdb_sql_database.cosmosdb_sql_databases : k => v.autoscale_settings if v.autoscale_settings != null && length(v.autoscale_settings) > 0 }
+  value       = { for k, v in azurerm_cosmosdb_sql_database.cosmosdb_sql_databases : k => one(v.autoscale_settings) if v.autoscale_settings != null && length(v.autoscale_settings) > 0 }
 }
 output "cosmosdb_sql_databases_name" {
   description = "Map of name values across all cosmosdb_sql_databases, keyed the same as var.cosmosdb_sql_databases"
